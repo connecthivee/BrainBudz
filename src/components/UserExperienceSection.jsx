@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useSectionSpotlight } from '../hooks/useSectionSpotlight'
+import { useCarouselScroll } from '../hooks/useCarouselScroll'
 import './UserExperienceSection.css'
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/'
@@ -22,21 +21,23 @@ const TESTIMONIALS = [
   },
 ]
 
-export default function UserExperienceSection({ mouseX = 0, mouseY = 0 }) {
-  const [sectionRef, spotlightStyle] = useSectionSpotlight(mouseX, mouseY)
-  const [index, setIndex] = useState(0)
-  const goPrev = () => setIndex((i) => Math.max(0, i - 1))
-  const goNext = () => setIndex((i) => Math.min(TESTIMONIALS.length - 1, i + 1))
+export default function UserExperienceSection() {
+  const {
+    viewportRef,
+    index,
+    goPrev,
+    goNext,
+    goToPage,
+    totalPages,
+    activePage,
+    trackWidthPercent,
+    totalItems,
+    maxIndex,
+  } = useCarouselScroll(TESTIMONIALS.length)
+
   return (
-    <section id="user-experience" ref={sectionRef} className="user-experience-section">
+    <section id="user-experience" className="user-experience-section">
       <div className="user-experience-section-bg" />
-      {spotlightStyle && (
-        <div
-          className="user-experience-section-spotlight"
-          style={spotlightStyle}
-          aria-hidden="true"
-        />
-      )}
       <div className="user-experience-inner">
         <h2 className="user-experience-title">User Experience</h2>
         <p className="user-experience-desc">
@@ -52,15 +53,21 @@ export default function UserExperienceSection({ mouseX = 0, mouseY = 0 }) {
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
           </button>
-          <div className="user-experience-carousel-viewport">
-            <div className="user-experience-carousel-track" style={{ transform: `translateX(-${index * (100 / TESTIMONIALS.length)}%)` }}>
+          <div
+            ref={viewportRef}
+            className="user-experience-carousel-viewport"
+            role="region"
+            aria-label="Testimonials carousel"
+          >
+            <div
+              className="user-experience-carousel-track"
+              style={{
+                width: `${totalItems * trackWidthPercent}%`,
+                ['--carousel-slots']: totalItems,
+              }}
+            >
               {TESTIMONIALS.map((t, i) => (
                 <div key={i} className="user-experience-carousel-slot">
-                  {i > 0 && (
-                    <div className="user-experience-carousel-rope-wrap" aria-hidden="true">
-                      <div className="user-experience-carousel-rope" />
-                    </div>
-                  )}
                   <article className="user-experience-card">
                     <div className="user-experience-card-photo-wrap">
                       <img src={t.photo} alt={t.name} className="user-experience-card-photo" loading="lazy" />
@@ -76,20 +83,20 @@ export default function UserExperienceSection({ mouseX = 0, mouseY = 0 }) {
             type="button"
             className="user-experience-carousel-arrow user-experience-carousel-arrow--next"
             onClick={goNext}
-            disabled={index === TESTIMONIALS.length - 1}
+            disabled={index === maxIndex}
             aria-label="Next"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
           </button>
         </div>
         <div className="user-experience-dots" aria-hidden="true">
-          {TESTIMONIALS.map((_, i) => (
+          {Array.from({ length: totalPages }, (_, p) => (
             <button
-              key={i}
+              key={p}
               type="button"
-              className={`user-experience-dot ${i === index ? 'user-experience-dot--active' : ''}`}
-              onClick={() => setIndex(i)}
-              aria-label={`Go to testimonial ${i + 1}`}
+              className={`user-experience-dot ${p === activePage ? 'user-experience-dot--active' : ''}`}
+              onClick={() => goToPage(p)}
+              aria-label={`Go to page ${p + 1}`}
             />
           ))}
         </div>

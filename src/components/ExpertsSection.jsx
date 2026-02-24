@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useSectionSpotlight } from '../hooks/useSectionSpotlight'
+import { useCarouselScroll } from '../hooks/useCarouselScroll'
 import './ExpertsSection.css'
 
 const EXPERTS = [
@@ -35,21 +34,23 @@ const EXPERTS = [
   },
 ]
 
-export default function ExpertsSection({ mouseX = 0, mouseY = 0 }) {
-  const [sectionRef, spotlightStyle] = useSectionSpotlight(mouseX, mouseY)
-  const [index, setIndex] = useState(0)
-  const goPrev = () => setIndex((i) => Math.max(0, i - 1))
-  const goNext = () => setIndex((i) => Math.min(EXPERTS.length - 1, i + 1))
+export default function ExpertsSection() {
+  const {
+    viewportRef,
+    index,
+    goPrev,
+    goNext,
+    goToPage,
+    totalPages,
+    activePage,
+    trackWidthPercent,
+    totalItems,
+    maxIndex,
+  } = useCarouselScroll(EXPERTS.length)
+
   return (
-    <section id="experts" ref={sectionRef} className="experts-section">
+    <section id="experts" className="experts-section">
       <div className="experts-section-bg" />
-      {spotlightStyle && (
-        <div
-          className="experts-section-spotlight"
-          style={spotlightStyle}
-          aria-hidden="true"
-        />
-      )}
       <div className="experts-section-inner">
         <h2 className="experts-section-title">Our Experts</h2>
         <p className="experts-section-desc">
@@ -65,15 +66,21 @@ export default function ExpertsSection({ mouseX = 0, mouseY = 0 }) {
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
           </button>
-          <div className="experts-carousel-viewport">
-            <div className="experts-carousel-track" style={{ transform: `translateX(-${index * (100 / EXPERTS.length)}%)` }}>
+          <div
+            ref={viewportRef}
+            className="experts-carousel-viewport"
+            role="region"
+            aria-label="Experts carousel"
+          >
+            <div
+              className="experts-carousel-track"
+              style={{
+                width: `${totalItems * trackWidthPercent}%`,
+                ['--carousel-slots']: totalItems,
+              }}
+            >
               {EXPERTS.map((expert, i) => (
                 <div key={i} className="experts-carousel-slot">
-                  {i > 0 && (
-                    <div className="experts-carousel-rope-wrap" aria-hidden="true">
-                      <div className="experts-carousel-rope" />
-                    </div>
-                  )}
                   <article className="expert-card">
                     <div className="expert-card-image-wrap">
                       <img src={expert.image} alt={expert.name} className="expert-card-image" loading="lazy" />
@@ -90,20 +97,20 @@ export default function ExpertsSection({ mouseX = 0, mouseY = 0 }) {
             type="button"
             className="experts-carousel-arrow experts-carousel-arrow--next"
             onClick={goNext}
-            disabled={index === EXPERTS.length - 1}
+            disabled={index === maxIndex}
             aria-label="Next expert"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
           </button>
         </div>
         <div className="experts-dots" aria-hidden="true">
-          {EXPERTS.map((_, i) => (
+          {Array.from({ length: totalPages }, (_, p) => (
             <button
-              key={i}
+              key={p}
               type="button"
-              className={`experts-dot ${i === index ? 'experts-dot--active' : ''}`}
-              onClick={() => setIndex(i)}
-              aria-label={`Go to expert ${i + 1}`}
+              className={`experts-dot ${p === activePage ? 'experts-dot--active' : ''}`}
+              onClick={() => goToPage(p)}
+              aria-label={`Go to page ${p + 1}`}
             />
           ))}
         </div>

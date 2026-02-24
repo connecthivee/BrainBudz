@@ -75,8 +75,8 @@ function App() {
         <div className="scroll-sections">
           <section className="hero-spacer" aria-hidden="true" />
           <BooksSection mouseX={mouse.x} mouseY={mouse.y} />
-          <ExpertsSection mouseX={mouse.x} mouseY={mouse.y} />
-          <UserExperienceSection mouseX={mouse.x} mouseY={mouse.y} />
+          <ExpertsSection />
+          <UserExperienceSection />
           <Footer mouseX={mouse.x} mouseY={mouse.y} />
         </div>
       </div>
