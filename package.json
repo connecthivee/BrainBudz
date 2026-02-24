@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://connecthivee.github.io/brainbuzz",
+  "homepage": "https://connecthivee.github.io/BrainBudz",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
