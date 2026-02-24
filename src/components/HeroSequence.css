@@ -1,0 +1,53 @@
+.hero-sequence {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Light pink sides when video/image doesn't fill width (no black bars) */
+  background: var(--theme-pink);
+}
+
+.hero-sequence::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(252, 228, 236, 0.25) 50%,
+    rgba(253, 242, 246, 0.9) 100%
+  );
+  pointer-events: none;
+}
+
+.hero-sequence-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Overlay strips to cover black bars on sides (baked into video frames) */
+.hero-sequence-side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 18%;
+  min-width: 80px;
+  max-width: 180px;
+  background: #fce4ec;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-sequence-side-left {
+  left: 0;
+}
+
+.hero-sequence-side-right {
+  right: 0;
+}

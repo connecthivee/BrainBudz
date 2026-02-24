@@ -1,0 +1,63 @@
+.animated-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(135deg, #fdf2f6 0%, #fce4ec 50%, #f8e4eb 100%);
+}
+
+.animated-hero-img {
+  position: absolute;
+  inset: 0;
+  background: url('/pic/hero/kids.png') center center / cover no-repeat;
+  opacity: 0.22;
+}
+
+/* Cursor-following circle: clear image inside, faded outside */
+.animated-hero-spotlight {
+  position: absolute;
+  inset: 0;
+  background: url('/pic/hero/kids.png') center center / cover no-repeat;
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.animated-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(252, 228, 236, 0.5) 0%, transparent 50%);
+  animation: bgPulse 8s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+.animated-hero-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 { width: 60px; height: 60px; top: 15%; left: 10%; animation-delay: 0s; }
+.shape-2 { width: 40px; height: 40px; top: 25%; right: 15%; animation-delay: -1s; }
+.shape-3 { width: 50px; height: 50px; bottom: 30%; left: 20%; animation-delay: -2s; }
+.shape-4 { width: 35px; height: 35px; bottom: 20%; right: 25%; animation-delay: -3s; }
+.shape-5 { width: 45px; height: 45px; top: 50%; left: 5%; animation-delay: -4s; }
+.shape-6 { width: 30px; height: 30px; top: 60%; right: 10%; animation-delay: -5s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  33% { transform: translate(10px, -15px) scale(1.05); opacity: 0.7; }
+  66% { transform: translate(-8px, 10px) scale(0.95); opacity: 0.6; }
+}

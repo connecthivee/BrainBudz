@@ -1,0 +1,55 @@
+:root {
+  /* BrainBudz brand (from logo) */
+  --brand-primary: #2a6fe2;
+  --brand-primary-rgb: 42, 107, 226;
+  --brand-highlight: #66ccff;
+  --brand-highlight-rgb: 102, 204, 255;
+  --brand-light: #7ac5f9;
+  --brand-light-rgb: 122, 197, 249;
+  --brand-dark: #1a4a9e;
+  /* Light pink theme (video / My Senses) */
+  --theme-pink: #fce4ec;
+  --theme-pink-soft: #f8e4eb;
+  --theme-pink-warm: #fdf2f6;
+  --theme-pink-border: rgba(0, 0, 0, 0.06);
+  /* Use light pink as main surface */
+  --milky: #fdf2f6;
+  --milky-soft: #f8e4eb;
+  --milky-warm: #fce4ec;
+  --milky-border: rgba(0, 0, 0, 0.06);
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #6b6b6b;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background: var(--milky);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+canvas {
+  display: block;
+  outline: none;
+}

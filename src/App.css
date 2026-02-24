@@ -1,0 +1,31 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+}
+
+.canvas-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, var(--theme-pink-warm) 0%, var(--theme-pink) 40%, var(--theme-pink-soft) 100%);
+}
+
+.canvas-wrap > canvas {
+  position: relative;
+  z-index: 0;
+}
+
+.hero-spacer {
+  height: 100vh;
+  pointer-events: none;
+}
+
+.scroll-spacer {
+  height: 100vh;
+  pointer-events: none;
+}
+
+.scroll-sections {
+  position: relative;
+  z-index: 2;
+}
