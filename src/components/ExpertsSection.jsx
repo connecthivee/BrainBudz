@@ -66,16 +66,23 @@ export default function ExpertsSection({ mouseX = 0, mouseY = 0 }) {
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
           </button>
           <div className="experts-carousel-viewport">
-            <div className="experts-carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>
+            <div className="experts-carousel-track" style={{ transform: `translateX(-${index * (100 / EXPERTS.length)}%)` }}>
               {EXPERTS.map((expert, i) => (
-                <article key={i} className="expert-card">
-                  <div className="expert-card-image-wrap">
-                    <img src={expert.image} alt={expert.name} className="expert-card-image" loading="lazy" />
-                  </div>
-                  <h3 className="expert-card-name">{expert.name}</h3>
-                  <p className="expert-card-role">{expert.role}</p>
-                  <p className="expert-card-experience">{expert.experience}</p>
-                </article>
+                <div key={i} className="experts-carousel-slot">
+                  {i > 0 && (
+                    <div className="experts-carousel-rope-wrap" aria-hidden="true">
+                      <div className="experts-carousel-rope" />
+                    </div>
+                  )}
+                  <article className="expert-card">
+                    <div className="expert-card-image-wrap">
+                      <img src={expert.image} alt={expert.name} className="expert-card-image" loading="lazy" />
+                    </div>
+                    <h3 className="expert-card-name">{expert.name}</h3>
+                    <p className="expert-card-role">{expert.role}</p>
+                    <p className="expert-card-experience">{expert.experience}</p>
+                  </article>
+                </div>
               ))}
             </div>
           </div>

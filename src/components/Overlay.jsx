@@ -36,17 +36,11 @@ export default function Overlay({ scrollProgress, scrollY = 0, isLoaded }) {
     return () => window.removeEventListener('mousemove', onMove)
   }, [])
 
-  // Ease-out helper for smooth reveal (no pop)
-  const easeOut = (t) => 1 - (1 - t) * (1 - t)
-
   // Logo: start big in center, shrink and move to top-left over first LOGO_SCROLL_RANGE px of scroll
   const logoT = Math.min((scrollY ?? 0) / LOGO_SCROLL_RANGE, 1)
 
   // Nav tab: hidden initially, fades in as user scroll (same range as logo moving to corner)
   const navOpacity = logoT
-
-  // Scroll hint: smooth fade out
-  const scrollHintOpacity = scrollProgress < 0.12 ? 1 : Math.max(0, 1 - easeOut((scrollProgress - 0.12) / 0.2))
 
   return (
     <div className={`overlay ${isLoaded ? 'loaded' : ''}`}>
@@ -86,10 +80,6 @@ export default function Overlay({ scrollProgress, scrollY = 0, isLoaded }) {
         document.body
       )}
 
-      <div className="scroll-hint" style={{ opacity: scrollHintOpacity }}>
-        <span className="scroll-hint-text">Scroll to explore</span>
-        <div className="scroll-hint-line" />
-      </div>
     </div>
   )
 }

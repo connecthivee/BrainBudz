@@ -53,15 +53,22 @@ export default function UserExperienceSection({ mouseX = 0, mouseY = 0 }) {
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
           </button>
           <div className="user-experience-carousel-viewport">
-            <div className="user-experience-carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>
+            <div className="user-experience-carousel-track" style={{ transform: `translateX(-${index * (100 / TESTIMONIALS.length)}%)` }}>
               {TESTIMONIALS.map((t, i) => (
-                <article key={i} className="user-experience-card">
-                  <div className="user-experience-card-photo-wrap">
-                    <img src={t.photo} alt={t.name} className="user-experience-card-photo" loading="lazy" />
-                  </div>
-                  <h3 className="user-experience-card-name">{t.name}</h3>
-                  <p className="user-experience-card-comment">&ldquo;{t.comment}&rdquo;</p>
-                </article>
+                <div key={i} className="user-experience-carousel-slot">
+                  {i > 0 && (
+                    <div className="user-experience-carousel-rope-wrap" aria-hidden="true">
+                      <div className="user-experience-carousel-rope" />
+                    </div>
+                  )}
+                  <article className="user-experience-card">
+                    <div className="user-experience-card-photo-wrap">
+                      <img src={t.photo} alt={t.name} className="user-experience-card-photo" loading="lazy" />
+                    </div>
+                    <h3 className="user-experience-card-name">{t.name}</h3>
+                    <p className="user-experience-card-comment">&ldquo;{t.comment}&rdquo;</p>
+                  </article>
+                </div>
               ))}
             </div>
           </div>
