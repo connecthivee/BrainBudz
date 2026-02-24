@@ -9,7 +9,7 @@
 .site-footer-bg {
   position: absolute;
   inset: 0;
-  background: url('/pic/hero/family.png') 62% center / 55% auto no-repeat;
+  background: url('../pic/hero/family.png') 62% center / 55% auto no-repeat;
   opacity: 0.12;
   pointer-events: none;
   mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
@@ -28,7 +28,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url('/pic/hero/family.png') 62% center / 55% auto no-repeat;
+  background: url('../pic/hero/family.png') 62% center / 55% auto no-repeat;
   opacity: 0.82;
   pointer-events: none;
   mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
@@ -65,5 +65,28 @@
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: clamp(2rem, 6vw, 3rem) 1rem;
+  }
+  .site-footer-inner {
+    padding-left: 1rem;
+    max-width: 100%;
+    gap: 1rem;
+  }
+  .site-footer-bg,
+  .site-footer-spotlight {
+    background-size: 70% auto;
+    background-position: 80% center;
+  }
+  .site-footer-logo-img {
+    height: 2.75rem;
+    max-width: 160px;
+  }
+  .site-footer-address {
+    font-size: 0.9rem;
+  }
 }
 

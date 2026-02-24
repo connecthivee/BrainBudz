@@ -8,53 +8,55 @@ const WHATSAPP_NUMBER = '917008310868'
 const whatsAppUrl = (text = '') =>
   `https://wa.me/${WHATSAPP_NUMBER}${text ? `?text=${encodeURIComponent(text)}` : ''}`
 
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/'
+
 const MY_SENSES_IMAGES = [
-  '/pic/my-senses-learning/61DPxbZnmuL._SL1500_.jpg',
-  '/pic/my-senses-learning/713nWZsIpiL._SL1500_.jpg',
-  '/pic/my-senses-learning/7160dptI4hL._SL1500_.jpg',
-  '/pic/my-senses-learning/71gpGA52+NL._SL1500_.jpg',
+  `${base}pic/my-senses-learning/61DPxbZnmuL._SL1500_.jpg`,
+  `${base}pic/my-senses-learning/713nWZsIpiL._SL1500_.jpg`,
+  `${base}pic/my-senses-learning/7160dptI4hL._SL1500_.jpg`,
+  `${base}pic/my-senses-learning/71gpGA52+NL._SL1500_.jpg`,
 ]
 
 const MY_SENSES_AMAZON = 'https://www.amazon.in/Learning-Hearing-Picture-Based-Interactive-Preschool/dp/B0GJQMCV1X'
 
 const YES_NO_IMAGES = [
-  '/pic/learning-cards/611Ugd5wiQL._SL1500_.jpg',
-  '/pic/learning-cards/616VVtz+DbL._SL1500_.jpg',
-  '/pic/learning-cards/61LBQoCjZ5L._SL1024_.jpg',
+  `${base}pic/learning-cards/611Ugd5wiQL._SL1500_.jpg`,
+  `${base}pic/learning-cards/616VVtz+DbL._SL1500_.jpg`,
+  `${base}pic/learning-cards/61LBQoCjZ5L._SL1024_.jpg`,
 ]
 
 const YES_NO_AMAZON = 'https://www.amazon.in/Decision-Making-Activities-Picture-Based-Cognitive-Development/dp/B0GLF5VKGD'
 
 const PREPOSITIONS_IMAGES = [
-  '/pic/easy-for-kids/61LrgbiYYQL._SL1500_.jpg',
-  '/pic/easy-for-kids/61PfLd3CiwL._SL1500_.jpg',
-  '/pic/easy-for-kids/61kVDxwnFYL._SL1500_.jpg',
-  '/pic/easy-for-kids/710hAl-OjCL._SL1500_.jpg',
+  `${base}pic/easy-for-kids/61LrgbiYYQL._SL1500_.jpg`,
+  `${base}pic/easy-for-kids/61PfLd3CiwL._SL1500_.jpg`,
+  `${base}pic/easy-for-kids/61kVDxwnFYL._SL1500_.jpg`,
+  `${base}pic/easy-for-kids/710hAl-OjCL._SL1500_.jpg`,
 ]
 
 const PREPOSITIONS_AMAZON = 'https://www.amazon.in/Prepositions-Placement-Activities-Picture-Based-Learning/dp/B0GJLP93WS'
 
 const WORKBOOK_IMAGES = [
-  '/pic/workbook/61A--dXEMNL._SL1500_.jpg',
-  '/pic/workbook/61PlgdPvdBL._SL1500_.jpg',
-  '/pic/workbook/61yIunlLaGL._SL1500_.jpg',
+  `${base}pic/workbook/61A--dXEMNL._SL1500_.jpg`,
+  `${base}pic/workbook/61PlgdPvdBL._SL1500_.jpg`,
+  `${base}pic/workbook/61yIunlLaGL._SL1500_.jpg`,
 ]
 
 const WORKBOOK_AMAZON = 'https://www.amazon.in/Community-Workbook-Picture-Based-Learning-Awareness/dp/B0GH2345R4'
 
 const FOOD_PLATE_IMAGES = [
-  '/pic/activity-book/61P6MtvWLtL._SL1500_.jpg',
-  '/pic/activity-book/61S8i7rQFuL._SL1500_.jpg',
-  '/pic/activity-book/61Zlu1ZHDrL._SL1024_.jpg',
+  `${base}pic/activity-book/61P6MtvWLtL._SL1500_.jpg`,
+  `${base}pic/activity-book/61S8i7rQFuL._SL1500_.jpg`,
+  `${base}pic/activity-book/61Zlu1ZHDrL._SL1024_.jpg`,
 ]
 
 const FOOD_PLATE_AMAZON = 'https://www.amazon.in/Activity-Balanced-Activities-Picture-Based-Nutrition/dp/B0GK92GQFX'
 
 const FESTIVALS_IMAGES = [
-  '/pic/festival/61MZNLuTANL._SL1500_.jpg',
-  '/pic/festival/61tnOmO4VTL._SL1280_.jpg',
-  '/pic/festival/713kCrPA0EL._SL1500_.jpg',
-  '/pic/festival/71Ps7wP1cPL._SL1500_.jpg',
+  `${base}pic/festival/61MZNLuTANL._SL1500_.jpg`,
+  `${base}pic/festival/61tnOmO4VTL._SL1280_.jpg`,
+  `${base}pic/festival/713kCrPA0EL._SL1500_.jpg`,
+  `${base}pic/festival/71Ps7wP1cPL._SL1500_.jpg`,
 ]
 
 const FESTIVALS_AMAZON = 'https://www.amazon.in/Indian-Festivals-Kids-Interactive-Educational/dp/B0GF244C5K'

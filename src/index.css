@@ -44,6 +44,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (max-width: 768px) {
+  body {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 #root {
   min-height: 100vh;
   position: relative;

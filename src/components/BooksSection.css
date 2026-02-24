@@ -8,7 +8,7 @@
 .books-section-bg {
   position: absolute;
   inset: 0;
-  background: url('/pic/hero/letters.png') right bottom / 55% auto no-repeat;
+  background: url('../pic/hero/letters.png') right bottom / 55% auto no-repeat;
   background-blend-mode: overlay;
   opacity: 0.18;
   pointer-events: none;
@@ -20,7 +20,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url('/pic/hero/letters.png') right bottom / 55% auto no-repeat;
+  background: url('../pic/hero/letters.png') right bottom / 55% auto no-repeat;
   opacity: 0.88;
   pointer-events: none;
   mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
@@ -262,4 +262,40 @@
 
 .books-view-all:hover {
   color: var(--brand-dark);
+}
+
+@media (max-width: 768px) {
+  .books-section {
+    padding: clamp(2rem, 6vw, 3rem) 1rem;
+  }
+  .books-section-inner {
+    padding: 0 0.25rem;
+  }
+  .books-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+    gap: 1rem;
+  }
+  .book-card--small .book-card-image-wrap,
+  .book-card-image-wrap--gallery {
+    max-height: 120px;
+    min-height: 100px;
+  }
+  .book-card-body {
+    padding: 0.75rem;
+  }
+  .book-card-actions .btn {
+    min-height: 40px;
+    padding: 0.5rem 0.75rem;
+  }
+  .books-view-all {
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 480px) {
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
 }

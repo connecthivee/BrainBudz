@@ -3,7 +3,8 @@ import { motion, useMotionValue } from 'framer-motion'
 import './HeroSequence.css'
 
 const FRAME_COUNT = 240
-const SEQUENCE_BASE = '/pic/hero/hero_pic'
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/'
+const SEQUENCE_BASE = `${base}pic/hero/hero_pic`
 
 function pad(n) {
   return String(n).padStart(3, '0')

@@ -64,7 +64,7 @@ export default function Overlay({ scrollProgress, scrollY = 0, isLoaded }) {
         <div className="persistent-header" style={{ '--logo-t': logoT }}>
           <div className="logo-hero-to-corner">
             <a
-              href="/"
+              href={import.meta.env.BASE_URL}
               className={`logo ${logoAnimating ? 'logo--animating' : ''}`}
               onClick={onLogoClick}
             >

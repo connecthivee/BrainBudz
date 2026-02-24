@@ -16,7 +16,7 @@ export default function Footer({ mouseX = 0, mouseY = 0 }) {
         />
       )}
       <div className="site-footer-inner">
-        <a href="/" className="site-footer-logo">
+        <a href={import.meta.env.BASE_URL} className="site-footer-logo">
           <img src={logoImg} alt="BrainBudz Learning Solutions" className="site-footer-logo-img" />
         </a>
         <address className="site-footer-address">

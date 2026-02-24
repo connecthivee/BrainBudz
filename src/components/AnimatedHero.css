@@ -10,7 +10,7 @@
 .animated-hero-img {
   position: absolute;
   inset: 0;
-  background: url('/pic/hero/kids.png') center center / cover no-repeat;
+  background: url('../pic/hero/kids.png') center center / cover no-repeat;
   opacity: 0.22;
 }
 
@@ -18,7 +18,7 @@
 .animated-hero-spotlight {
   position: absolute;
   inset: 0;
-  background: url('/pic/hero/kids.png') center center / cover no-repeat;
+  background: url('../pic/hero/kids.png') center center / cover no-repeat;
   opacity: 0.92;
   pointer-events: none;
 }

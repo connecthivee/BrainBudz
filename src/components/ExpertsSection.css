@@ -8,7 +8,7 @@
 .experts-section-bg {
   position: absolute;
   inset: 0;
-  background: url('/pic/hero/kidcare.png') center center / cover no-repeat;
+  background: url('../pic/hero/kidcare.png') center center / cover no-repeat;
   opacity: 0.14;
   pointer-events: none;
   mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -27,7 +27,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url('/pic/hero/kidcare.png') center center / cover no-repeat;
+  background: url('../pic/hero/kidcare.png') center center / cover no-repeat;
   opacity: 0.88;
   pointer-events: none;
   mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -56,40 +56,90 @@
   margin-bottom: 2rem;
 }
 
-.experts-grid {
+.experts-carousel {
+  position: relative;
   display: flex;
-  gap: 1.25rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 0.5rem 0 1rem;
-  margin: 0 -0.5rem;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.experts-grid::-webkit-scrollbar {
-  height: 6px;
+.experts-carousel-viewport {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+  padding: 0 0.5rem;
 }
 
-.experts-grid::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.06);
-  border-radius: 3px;
-}
-
-.experts-grid::-webkit-scrollbar-thumb {
-  background: var(--brand-primary);
-  border-radius: 3px;
+.experts-carousel-track {
+  display: flex;
+  transition: transform 0.35s ease-out;
 }
 
 .expert-card {
-  flex: 0 0 auto;
-  width: min(260px, 85vw);
-  scroll-snap-align: start;
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem;
   background: rgba(255, 255, 255, 0.92);
   border-radius: 16px;
-  padding: 1.25rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.experts-carousel-arrow {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--brand-primary);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, opacity 0.2s, transform 0.2s;
+}
+
+.experts-carousel-arrow:hover:not(:disabled) {
+  background: var(--brand-primary);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.experts-carousel-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.experts-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.experts-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.experts-dot:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.experts-dot--active {
+  background: var(--brand-primary);
+  transform: scale(1.2);
 }
 
 .expert-card:hover {
@@ -130,4 +180,25 @@
   font-size: 0.8rem;
   line-height: 1.45;
   color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .experts-section {
+    padding: clamp(2rem, 6vw, 3rem) 1rem;
+  }
+  .experts-section-inner {
+    padding: 0 0.25rem;
+  }
+  .experts-section-desc {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+  .experts-carousel-arrow {
+    width: 44px;
+    height: 44px;
+  }
+  .expert-card {
+    max-width: 280px;
+    padding: 1rem;
+  }
 }
